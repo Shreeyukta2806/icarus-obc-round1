@@ -42,12 +42,13 @@ int main(void) {
     volatile int physics_link_check = physics_verify_flag(0);
 
     cmd_bind_state(&state);
+    cmd_set_actuators(100.0, 5000.0);
 
-    state.actual_temperature = 20.0;  /* Baseline ambient */
+    state.actual_temperature = 86.0;  /* Baseline ambient */
     state.actual_wheel_rpm = 0.0;
     state.vibration_amplitude = 0.5;  /* Baseline vibration */
-    state.target_heater_pwm = 0.0;
-    state.target_wheel_rpm = 0.0;
+    state.target_heater_pwm = 100.0;
+    state.target_wheel_rpm = 5000.0;
 
     for (state.tick = 1; state.tick <= TOTAL_TICKS; ++state.tick) {
         state.orbit_index = ((state.tick - 1U) / TICKS_PER_ORBIT) + 1U;
